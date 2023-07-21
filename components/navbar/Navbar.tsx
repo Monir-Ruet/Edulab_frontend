@@ -1,9 +1,5 @@
 import { ThemeToggle } from '@/components/navbar/themetoggle'
 import Searchbar from './searchbar'
-import { useUserStore } from '@/zustand/store'
-import { Avatar, AvatarImage, AvatarFallback } from "@radix-ui/react-avatar"
-import { Dialog, DialogContent, DialogTrigger, } from "@/components/ui/dialog"
-import Login from "./loginpage"
 import Useravatar from './useravatar'
 
 const Navbar = () => {

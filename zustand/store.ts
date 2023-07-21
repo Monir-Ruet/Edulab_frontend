@@ -20,8 +20,21 @@ export const useUserStore = create<user>()((set) => ({
 }))
 
 
-export const useStore = create((set) => ({
-    bears: 0,
-    increasePopulation: () => set((state: any) => ({ bears: state.bears + 1 })),
-    removeAllBears: () => set({ bears: 0 }),
+export interface postEditor {
+    editorText: string,
+    selectedCategory: string,
+    tags: string[]
+}
+export const useEditorStore = create<postEditor>()((set) => ({
+    editorText: '',
+    selectedCategory: '',
+    tags: []
+
+
 }))
+
+// export const useStore = create((set) => ({
+//     bears: 0,
+//     increasePopulation: () => set((state: any) => ({ bears: state.bears + 1 })),
+//     removeAllBears: () => set({ bears: 0 }),
+// }))

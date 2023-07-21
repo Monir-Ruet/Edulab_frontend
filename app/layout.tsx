@@ -22,6 +22,11 @@ export default async function RootLayout({
   let user = await getuser();
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css'></link>
+        <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.8/katex.min.css'></link>
+
+      </head>
       <body>
         {
           user ? (

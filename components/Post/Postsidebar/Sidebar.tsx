@@ -27,19 +27,40 @@ interface SidebarProps {
         head: string,
         items: string[]
     }
+    selectedChapter: string,
+    chapters: [
+        {
+            name: string,
+            priority: Number,
+            post: {
+                title: string,
+                titleId: string
+            }[]
+        }
+    ],
+    subject: string,
     className?: string
 }
 const Sidebar: React.FC<SidebarProps> = ({
-    items,
+    selectedChapter,
+    chapters,
+    subject,
     className
 }) => {
+    chapters.sort((a, b) => {
+        if (a.priority > b.priority) return 1;
+        else return -1;
+    })
     return (
         <div className={className}>
             {
-                menu.map((items, index) => {
+                chapters.map((items, index) => {
                     return (
                         <div key={index}>
-                            <Collapse title={items.title} listitems={items.items} />
+                            {
+
+                                <Collapse selectedChapter={selectedChapter} title={items.name} items={items.post} />
+                            }
                         </div>
                     )
                 })

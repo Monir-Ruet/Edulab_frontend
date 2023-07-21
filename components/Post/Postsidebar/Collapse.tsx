@@ -9,40 +9,45 @@ import {
     CollapsibleContent,
     CollapsibleTrigger,
 } from "@/components/ui/collapsible"
+import Link from "next/link"
 
 interface collapseProps {
-    title: String
-    listitems: String[],
+    title: String,
+    selectedChapter: String,
+    items: {
+        title: string,
+        titleId: string
+    }[]
 }
 
 const Collapse: React.FC<collapseProps> = ({
     title,
-    listitems,
+    items,
+    selectedChapter
 }) => {
-    const [isOpen, setIsOpen] = React.useState(false)
-
+    const [isOpen, setIsOpen] = React.useState(title == selectedChapter)
     return (
-        <Collapsible>
+        <Collapsible open={isOpen} onOpenChange={setIsOpen} >
             <CollapsibleTrigger className="w-full">
                 <div className="flex flex-row justify-between items-center" onClick={() => setIsOpen(!isOpen)}>
-                    <div className="font-bold">
+                    <div className="font-serif">
                         {title}
                     </div>
                     <div className="flex">
                         {
-                            !isOpen ? <BiChevronDown className="h-6 w-6 " /> : <BiChevronUp className="h-6 w-6" />
+                            !isOpen ? <BiChevronDown className="h-4 w-4 " /> : <BiChevronUp className="h-4 w-4" />
                         }
                     </div>
                 </div>
             </CollapsibleTrigger>
             <CollapsibleContent>
                 {
-                    listitems.map((list) => {
+                    items.map((list, index) => {
                         return (
-                            <li className="flex flex-row justify-end list-none transition-colors hover:text-foreground/80 text-foreground/60" key={list as string}>
-                                <div className="w-11/12">
-                                    {list}
-                                </div>
+                            <li className="before:bg-[#c00] before:content-[''] before:w-[2px] before:top-0 before:bottom-[0px] before:left-[5px]  font-serif font-light flex flex-row justify-end transition-colors hover:text-foreground/80 text-foreground/60 relative m-0  pl-[10px]" key={index}>
+                                <Link href={list.titleId} className="w-11/12">
+                                    {list.title}
+                                </Link>
                             </li>
                         )
                     })
