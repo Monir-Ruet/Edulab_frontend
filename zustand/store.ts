@@ -21,11 +21,13 @@ export const useUserStore = create<user>()((set) => ({
 
 
 export interface postEditor {
+    title: string,
     editorText: string,
     selectedCategory: string,
     tags: string[]
 }
 export const useEditorStore = create<postEditor>()((set) => ({
+    title: '',
     editorText: '',
     selectedCategory: '',
     tags: []

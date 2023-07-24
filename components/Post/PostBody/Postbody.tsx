@@ -1,7 +1,7 @@
 import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
 import rehypeHighlight from 'rehype-highlight'
-import axiosClient from "@/lib/axiosClient";
+import axiosClient from "@/lib/axiosServer";
 import { compileMDX } from "next-mdx-remote/rsc";
 import remarkGfm from "remark-gfm";
 import rehypePrettyCode from "rehype-pretty-code";

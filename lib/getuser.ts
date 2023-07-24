@@ -1,4 +1,4 @@
-import axiosClient from "./axiosClient"
+import axiosClient from "./axiosServer"
 import { useUserStore } from "@/zustand/store";
 const getuser = async () => {
     try {

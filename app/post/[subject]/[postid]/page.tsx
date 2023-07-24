@@ -1,15 +1,18 @@
-import axiosClient from "@/lib/axiosClient";
+import axiosClient from "@/lib/axiosServer";
 import Image from "next/image";
 import Sidebar from "@/components/Post/Postsidebar/Sidebar"
 import Postbody from "@/components/Post/PostBody/Postbody"
+import { Suspense } from 'react'
+
 
 interface postId {
-    postId: string;
+    subject: string,
+    postid: string;
 }
 interface post {
 }
 async function Post({ params }: { params: postId }) {
-    const selectedPost = await (await axiosClient.get(`posts/${params.postId}`)).data
+    const selectedPost = await (await axiosClient.get(`posts/${params.subject}/${params.postid}`)).data
     if (selectedPost && selectedPost[1] == null) {
         return (
             <div className="text-center flex justify-center mt-10">
@@ -27,16 +30,16 @@ async function Post({ params }: { params: postId }) {
         )
     }
     const data = selectedPost[1];
-    const chapter = data.chapter;
-    const subject = chapter.subject;
-    const chaptername = chapter.name, subjectname = subject.name, chapters = subject.chapter;
+    const subject = data.subject;
     return (
         <div className="container flex flex-col justify-between md:flex-row">
-            <Sidebar selectedChapter={chaptername} chapters={chapters} subject={subjectname} className="w-full md:w-3/12 lg:w-2/12 mt-4 mr-4" />
-            <Postbody body={selectedPost[1].body} className="w-full md:w-9/12 lg:w-8/12 mt-4 mx-4" title={selectedPost[1].title} />
-            <div className="w-2/12 mt-4 ml-4 hidden lg:block">
+            <Sidebar posttitle={selectedPost[1].title} subject={subject} className="w-12/12 md:w-3/12 lg:w-2/12 mt-4 mr-4" />
+            <Suspense fallback={<p>Loading feed...</p>}>
+                <Postbody body={selectedPost[1].body} className="w-full md:w-9/12 lg:w-10/12 mt-4 mx-4" title={selectedPost[1].title} />
+            </Suspense>
+            {/* <div className="w-2/12 mt-4 ml-4 hidden lg:block">
                 Right
-            </div>
+            </div> */}
         </div>
     )
 }
