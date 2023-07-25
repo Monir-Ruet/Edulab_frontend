@@ -57,12 +57,9 @@ function Searchbar() {
                     if (timeout) { clearTimeout(timeout) }
                     timeout =
                         setTimeout(async () => {
-                            if (e.target.value) {
-                                const result = await axiosClient.get(`/posts/search?keyword=` + e.target.value)
-                                console.log(result)
-                                if (result)
-                                    setpost(result.data)
-                            }
+                            const result = await axiosClient.get(`/posts/search?keyword=` + e.target.value)
+                            if (result)
+                                setpost(result.data)
                         }, 500)
                 }} />
                 <CommandList>

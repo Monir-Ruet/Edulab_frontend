@@ -35,24 +35,29 @@ const Postbody: React.FC<PostBodyProps> = async ({
         },
         components: {
             h1: (props) => {
-                return (<h1 className={"text-dark dark:text-white" + props.className}>{props.children}</h1>)
+                return (<h1 className={"m-0 text-dark dark:text-white" + props.className}>{props.children}</h1>)
             },
             pre: (props) => {
                 return (
-                    <pre className={props.className ? props.className : '' + " bg-white dark:bg-[#16181D] overflow-x-auto shadow-md"}>{props.children}</pre>
+                    <pre className={props.className ? props.className : '' + " bg-[#F6F8FA] dark:bg-[#16181D] overflow-x-auto border-2 rounded"}>{props.children}</pre>
                 )
             },
             code: (props) => {
                 if (props.className != undefined) {
                     return (
-                        <code className={"text-base bg-white dark:bg-[#16181D]"}>{props.children}</code>
+                        <code className={"text-base bg-[#F6F8FA] dark:bg-[#16181D]"}>{props.children}</code>
                     )
                 } else {
                     return (
-                        <code className="p-2 bg-red-800">{props.children}</code>
+                        <code className="p-1 rounded-md bg-zinc-300 dark:bg-zinc-700">{props.children}</code>
                     )
                 }
             },
+            p: (props) => {
+                return (
+                    <p className="m-0">{props.children}</p>
+                )
+            }
 
         }
     })

@@ -1,6 +1,6 @@
 import axios from "axios";
 const axiosClient = axios.create({
-    baseURL: 'http://localhost:5000',
+    baseURL: process.env.backend_url,
     withCredentials: true
 });
 

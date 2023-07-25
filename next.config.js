@@ -9,6 +9,9 @@ const nextConfig = {
             'avatars.githubusercontent.com',
             'lh3.googleusercontent.com'
         ]
+    },
+    env: {
+        backend_url: "https://nspgvh-5000.csb.app"
     }
 }
 

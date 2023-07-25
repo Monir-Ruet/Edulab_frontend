@@ -51,7 +51,7 @@ const Editor = () => {
             <TabsContent value="preview" className="h-fit">
                 <div data-color-mode={theme.theme}>
                     <div className="wmde-markdown-var">
-                        <h1>
+                        <h1 className="text-bold text-3xl">
                             {
                                 useEditorStore.getState().title
                             }

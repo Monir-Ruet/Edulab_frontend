@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { cookies } from 'next/headers';
 const axiosServer = axios.create({
-    baseURL: 'http://localhost:5000',
+    baseURL: process.env.backend_url,
     withCredentials: true
 });
 
